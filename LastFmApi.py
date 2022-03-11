@@ -4,6 +4,7 @@ import datetime
 import time
 
 from . import Logger
+from . import LastFmData as data
 
 API_ROOT = "https://ws.audioscrobbler.com/2.0/"
 
