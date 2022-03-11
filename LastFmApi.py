@@ -3,8 +3,7 @@ import json
 import datetime
 import time
 
-import classes.LastFmData as data
-import classes.Logger as logger
+from . import Logger
 
 API_ROOT = "https://ws.audioscrobbler.com/2.0/"
 
@@ -22,7 +21,7 @@ class LastFmApi:
 
     def __init__(self, api_key: str):
         self._api_key = api_key
-        self._logger = logger.Logger(f'{datetime.date.today().strftime("%Y%m%d")}_LastFm_Log.txt')
+        self._logger = Logger.Logger(f'{datetime.date.today().strftime("%Y%m%d")}_LastFm_Log.txt')
 
     def _make_api_request(self, endpoint: str) -> requests.Request():
         self._write_log(message=f"Calling LastFM API with endpoint: {endpoint}")
