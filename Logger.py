@@ -1,4 +1,5 @@
 import datetime as DT
+import os
 
 """
 Logger to write standard log lines starting with current time and error leve
@@ -8,7 +9,9 @@ class Logger:
     _levels = ["Critical", "Error", "Warn", "Info"]
 
     def __init__(self, log_path: str) -> None:
-        self._log = open(log_path, "a")
+        if not os.path.exists('logs'):
+            os.mkdir('logs')
+        self._log = open(f'logs/{log_path}', "a")
 
     """
     Write a log message to log and console
